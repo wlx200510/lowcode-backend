@@ -4,21 +4,21 @@ import { ConfigModule, ConfigService } from 'nestjs-config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerMiddleware } from './middleware/logger/logger.middleware';
 import { MailerModule } from '@nest-modules/mailer';
-import { PageModule } from './modules/page/page.module';
+import { ProjectModule } from './modules/project/project.module';
 import { EmailModule } from './modules/email/email.module';
 
 @Module({
   imports: [
     ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     TypeOrmModule.forRootAsync({
-      useFactory: (config: ConfigService) => config.get('databasee'),
+      useFactory: (config: ConfigService) => config.get('database'),
       inject: [ConfigService],
     }),
     MailerModule.forRootAsync({
       useFactory: (config: ConfigService) => config.get('email'),
       inject: [ConfigService],
     }),
-    PageModule,
+    ProjectModule,
     EmailModule,
   ],
 })

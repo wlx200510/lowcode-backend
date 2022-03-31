@@ -48,3 +48,14 @@ Nest is [MIT licensed](LICENSE).
 
 ## incoming
 - monitor
+
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `projectType` VARCHAR(50) NOT NULL,
+  `projectDesc` TEXT NOT NULL,
+  `projectName` VARCHAR(100) NOT NULL,
+  `renderData` JSON NOT NULL,
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
