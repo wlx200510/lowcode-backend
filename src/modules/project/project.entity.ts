@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Timestamp,
+} from 'typeorm';
 
 @Entity({ name: 'projects' })
 export class ProjectEntity {
@@ -16,4 +22,21 @@ export class ProjectEntity {
 
   @Column('json')
   renderData: string;
+
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'createTime',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    comment: '创建时间',
+  })
+  createTime: Date;
+
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'updateTime',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    comment: '更新时间',
+  })
+  updateTime: Date;
 }

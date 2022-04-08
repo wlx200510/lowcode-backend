@@ -50,12 +50,12 @@ Nest is [MIT licensed](LICENSE).
 - monitor
 
 CREATE TABLE IF NOT EXISTS `projects` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `projectType` VARCHAR(50) NOT NULL,
-  `projectDesc` TEXT NOT NULL,
-  `projectName` VARCHAR(100) NOT NULL,
-  `renderData` JSON NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `projectType` varchar(50) NOT NULL,
+  `projectDesc` text NOT NULL,
+  `renderData` json NOT NULL,
+  `projectName` varchar(255) NOT NULL,
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updateTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
